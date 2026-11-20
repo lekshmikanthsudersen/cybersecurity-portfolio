@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A limited Nmap service scan against one owned Metasploitable 2 VM, with saved output and careful interpretation.">
+  <title>Scoped Nmap service scan | Sudersen Lekshmikanth</title>
+  <link rel="stylesheet" href="../../assets/css/workspace.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+    <a class="brand" href="../../"><span class="brand-mark" aria-hidden="true">SL</span><span>Sudersen Lekshmikanth</span></a>
+    <span class="window-title">cybersecurity-portfolio / nmap-scan.md</span>
+    <nav class="site-nav" aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#projects">Projects</a><a href="../../#learning">Learning</a><a href="../../#contact">Contact</a></nav>
+  </header>
+  <div class="workspace-shell">
+    <nav class="activity-rail" aria-label="Workspace shortcuts"><a href="../../" aria-label="Overview">SL</a><a href="../../#projects" class="active" aria-label="Projects">01</a><a href="../../#learning" aria-label="Learning">02</a><a href="../../#contact" aria-label="Contact">@</a></nav>
+    <aside class="explorer" aria-label="Portfolio explorer">
+      <p class="explorer-label">EXPLORER</p><p class="tree-heading">▾ CYBERSECURITY PORTFOLIO</p>
+      <nav class="file-tree" aria-label="Portfolio files">
+        <a class="tree-item" href="../../"><span class="file-icon md">M</span>overview.md</a>
+        <a class="tree-item" href="../../#about"><span class="file-icon md">M</span>about.md</a>
+        <a class="tree-item" href="../../#skills"><span class="file-icon json">{ }</span>skills.json</a>
+        <a class="tree-item" href="../../#training"><span class="file-icon md">M</span>training.md</a>
+        <a class="tree-item" href="../../#learning"><span class="file-icon md">M</span>learning.md</a>
+        <a class="tree-item" href="../../#career"><span class="file-icon md">M</span>career.md</a>
+        <a class="tree-item" href="../../#contact"><span class="file-icon md">M</span>contact.md</a>
+      </nav>
+      <p class="tree-heading tree-group">▾ CASE FILES</p>
+      <nav class="file-tree" aria-label="Case files">
+        <a class="tree-item" href="../virtual-lab-setup/"><span class="file-icon case">01</span>private-lab.md</a>
+        <a class="tree-item selected" href="./"><span class="file-icon case">02</span>nmap-scan.md</a>
+        <a class="tree-item" href="../../evidence.html"><span class="file-icon csv">#</span>evidence.csv</a>
+      </nav>
+      <a class="explorer-footer" href="https://github.com/lekshmikanthsudersen/cybersecurity-portfolio">View repository ↗</a>
+    </aside>
+    <div class="editor">
+      <nav class="editor-tabs" aria-label="Open portfolio pages">
+        <a class="editor-tab" href="../../"><span class="tab-dot md"></span>overview.md</a>
+        <a class="editor-tab" href="../virtual-lab-setup/"><span class="tab-dot case"></span>private-lab.md</a>
+        <a class="editor-tab active" href="./" aria-current="page"><span class="tab-dot case"></span>nmap-scan.md</a>
+        <a class="editor-tab" href="../../evidence.html"><span class="tab-dot csv"></span>evidence.csv</a>
+      </nav>
+      <div class="editor-path">portfolio <span>/</span> case-files <span>/</span> nmap-scan.md</div>
+  <main id="main">
+    <div class="page-hero"><div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../">Portfolio</a> / <span aria-current="page">Scoped Nmap service scan</span></nav>
+      <p class="eyebrow">Project 02 · Service discovery</p>
+      <h1>Scoped Nmap service scan</h1>
+      <p>A four-port scan of one owned VM produced service leads for investigation, not a finding that a vulnerability was exploitable.</p>
+    </div></div>
+    <section class="section"><div class="wrap project-layout">
+      <div class="project-main">
+        <h2>Objective</h2>
+        <p>Identify which services the owned Metasploitable 2 VM reported on selected TCP ports and record the output so another reader could check each claim.</p>
+
+        <h2>Environment and tools</h2>
+        <p>The scan ran from Kali Linux 2026.3 with Nmap 7.99 against <code>192.168.77.20</code> on the <a href="../virtual-lab-setup/">verified private VMware LAN segment</a>. The target was an intentionally vulnerable training VM owned for this lab. Only ports 21, 22, 80 and 445 were in scope. No internet, employer or third-party host was scanned.</p>
+
+        <h2>Method</h2>
+        <ol>
+          <li>Confirmed the two guest addresses, routes and local reachability before the scan.</li>
+          <li>Ran a TCP connect scan with light service-version detection, disabled reverse DNS, and requested reasons for each port state. The following is a portable equivalent of the recorded command, with its local output path shortened for publication:</li>
+        </ol>
+        <pre><code>nmap -n -sT -sV --version-light --reason \
+  -p 21,22,80,445 -oA nmap-target 192.168.77.20</code></pre>
+        <ol start="3"><li>Saved the normal, XML and grepable outputs. Compared the displayed result with the saved file before writing the findings.</li></ol>
+
+        <h2 id="results">Results and evidence</h2>
+        <p>Nmap reported one host up by ARP response and the following four selected ports as open. The scan completed in 6.51 seconds. The software names below are Nmap's reported service and version results.</p>
+        <div class="result-table-wrap"><table class="result-table scan-table">
+          <caption class="visually-hidden">Reported services on the owned training target</caption>
+          <thead><tr><th scope="col">Port</th><th scope="col">Reported service</th><th scope="col">What the result supports</th></tr></thead>
+          <tbody>
+            <tr><td>21/tcp</td><td>FTP, vsftpd 2.3.4</td><td>An FTP service responded. Anonymous access was not tested.</td></tr>
+            <tr><td>22/tcp</td><td>SSH, OpenSSH 4.7p1 Debian 8ubuntu1</td><td>An SSH service responded with this reported version string.</td></tr>
+            <tr><td>80/tcp</td><td>HTTP, Apache httpd 2.2.8</td><td>An HTTP server responded. Hosted applications were not identified.</td></tr>
+            <tr><td>445/tcp</td><td>netbios-ssn, Samba smbd 3.X–4.X</td><td>An SMB-related service responded; Nmap gave a broad version range.</td></tr>
+          </tbody>
+        </table></div>
+        <figure><a href="evidence/nmap-result.png"><img src="evidence/nmap-result.png" alt="Original Kali screenshot of the saved Nmap result for target 192.168.77.20 with ports 21, 22, 80 and 445 reported open" width="1280" height="800"></a><figcaption>Genuine Kali screenshot of the saved Nmap result, 16 November 2026. Open full image for the command, port states and completion line.</figcaption></figure>
+        <ul class="evidence-links"><li><a href="evidence/scan-output.txt">Sanitised scan-output excerpt</a></li><li><a href="../virtual-lab-setup/evidence/route-check.txt">Pre-scan route and reachability excerpt</a></li><li><a href="../../evidence.html">Evidence provenance and screenshot hashes</a></li></ul>
+
+        <h2>Interpretation and next step</h2>
+        <p>The results show services on four ports. They do not establish exact installed packages, enabled features, accessible shares or a confirmed CVE. The Samba range is especially broad. I would next inspect the owned target's local package and service configuration, then compare those details with a relevant advisory before making a vulnerability claim. I would also record which ports were not scanned, since this limited run cannot describe the whole host.</p>
+        <p class="note">No exploitation was attempted. The published screenshot and text excerpt contain only this owned lab target and the selected scan output.</p>
+        <p><a class="card-link" href="../virtual-lab-setup/">← Review the lab setup</a></p>
+      </div>
+      <aside class="fact-panel" aria-label="Project facts">
+        <h2>At a glance</h2>
+        <dl>
+          <dt>Target</dt><dd>One owned training VM</dd>
+          <dt>Ports</dt><dd>21, 22, 80, 445 TCP</dd>
+          <dt>Tool</dt><dd>Nmap 7.99</dd>
+          <dt>Recorded run</dt><dd>16 November 2026</dd>
+          <dt>Outcome</dt><dd>Four reported open ports; no vulnerability conclusion</dd>
+        </dl>
+      </aside>
+    </div></section>
+  </main>
+    </div>
+  </div>
+  <footer class="site-footer"><div><span class="status-branch">main</span><span>One owned target</span><span>Four selected ports</span></div><a href="../../evidence.html">Evidence record ↗</a></footer>
+</body>
+</html>
+

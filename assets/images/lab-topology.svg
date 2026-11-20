@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">Private virtual lab topology</title>
+  <desc id="desc">Kali Linux at 192.168.77.10 and Metasploitable 2 at 192.168.77.20 share only a private VMware LAN segment. No default gateway is configured.</desc>
+  <rect width="960" height="360" rx="22" fill="#f3f7f7"/>
+  <rect x="43" y="72" width="267" height="177" rx="15" fill="#fff" stroke="#a8bdc2" stroke-width="2"/>
+  <rect x="650" y="72" width="267" height="177" rx="15" fill="#fff" stroke="#a8bdc2" stroke-width="2"/>
+  <path d="M310 160H650" stroke="#087e84" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="480" cy="160" r="56" fill="#d9eeee" stroke="#087e84" stroke-width="3"/>
+  <text x="480" y="154" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#063b42">Private LAN</text>
+  <text x="480" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#34545b">192.168.77.0/24</text>
+  <text x="68" y="116" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#102b36">Kali Linux</text>
+  <text x="68" y="160" font-family="Arial,sans-serif" font-size="22" fill="#34545b">192.168.77.10</text>
+  <text x="68" y="205" font-family="Arial,sans-serif" font-size="17" fill="#34545b">Service scan workstation</text>
+  <text x="676" y="116" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#102b36">Metasploitable 2</text>
+  <text x="676" y="160" font-family="Arial,sans-serif" font-size="22" fill="#34545b">192.168.77.20</text>
+  <text x="676" y="205" font-family="Arial,sans-serif" font-size="17" fill="#34545b">Owned training target</text>
+  <text x="480" y="302" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#34545b">No NAT or bridged adapter · No usable default gateway</text>
+</svg>
+

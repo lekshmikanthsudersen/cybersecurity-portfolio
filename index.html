@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sudersen Lekshmikanth's cybersecurity portfolio: an isolated virtual lab, a scoped Nmap service scan, and a learning journey toward incident handling.">
+  <title>Sudersen Lekshmikanth | Cybersecurity portfolio</title>
+  <link rel="stylesheet" href="assets/css/workspace.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">SL</span><span>Sudersen Lekshmikanth</span></a>
+    <span class="window-title">cybersecurity-portfolio / overview.md</span>
+    <nav class="site-nav" aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a></nav>
+  </header>
+  <div class="workspace-shell">
+    <nav class="activity-rail" aria-label="Workspace shortcuts">
+      <a href="./" class="active" aria-label="Overview">SL</a>
+      <a href="#projects" aria-label="Projects">01</a>
+      <a href="#learning" aria-label="Learning">02</a>
+      <a href="#contact" aria-label="Contact">@</a>
+    </nav>
+    <aside class="explorer" aria-label="Portfolio explorer">
+      <p class="explorer-label">EXPLORER</p>
+      <p class="tree-heading">▾ CYBERSECURITY PORTFOLIO</p>
+      <nav class="file-tree" aria-label="Portfolio files">
+        <a class="tree-item selected" href="./"><span class="file-icon md">M</span>overview.md</a>
+        <a class="tree-item" href="#about"><span class="file-icon md">M</span>about.md</a>
+        <a class="tree-item" href="#skills"><span class="file-icon json">{ }</span>skills.json</a>
+        <a class="tree-item" href="#training"><span class="file-icon md">M</span>training.md</a>
+        <a class="tree-item" href="#learning"><span class="file-icon md">M</span>learning.md</a>
+        <a class="tree-item" href="#career"><span class="file-icon md">M</span>career.md</a>
+        <a class="tree-item" href="#contact"><span class="file-icon md">M</span>contact.md</a>
+      </nav>
+      <p class="tree-heading tree-group">▾ CASE FILES</p>
+      <nav class="file-tree" aria-label="Case files">
+        <a class="tree-item" href="projects/virtual-lab-setup/"><span class="file-icon case">01</span>private-lab.md</a>
+        <a class="tree-item" href="projects/nmap-service-scan/"><span class="file-icon case">02</span>nmap-scan.md</a>
+        <a class="tree-item" href="evidence.html"><span class="file-icon csv">#</span>evidence.csv</a>
+      </nav>
+      <a class="explorer-footer" href="https://github.com/lekshmikanthsudersen/cybersecurity-portfolio">View repository ↗</a>
+    </aside>
+    <div class="editor">
+      <nav class="editor-tabs" aria-label="Open portfolio pages">
+        <a class="editor-tab active" href="./" aria-current="page"><span class="tab-dot md"></span>overview.md</a>
+        <a class="editor-tab" href="projects/virtual-lab-setup/"><span class="tab-dot case"></span>private-lab.md</a>
+        <a class="editor-tab" href="projects/nmap-service-scan/"><span class="tab-dot case"></span>nmap-scan.md</a>
+        <a class="editor-tab" href="evidence.html"><span class="tab-dot csv"></span>evidence.csv</a>
+      </nav>
+      <div class="editor-path">portfolio <span>/</span> overview.md</div>
+  <main id="main">
+    <div class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Security operations analyst <span aria-hidden="true">/</span> Universiti Malaya</p>
+          <h1>Sudersen<br>Lekshmikanth<span class="hero-period">.</span></h1>
+          <p class="hero-role">L1 monitoring today. Building toward L2 incident handling.</p>
+          <p class="hero-lead">I review network, endpoint and identity alerts. These records show how I checked the boundary of a private training lab, ran a limited service scan, and interpreted the saved output.</p>
+          <a class="primary-link" href="#projects">Open case files <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="hero-proof">
+          <div class="proof-toolbar"><span>nmap-result.png</span><span>Original capture</span></div>
+          <a href="projects/nmap-service-scan/evidence/nmap-result.png" aria-label="Open the full Nmap lab screenshot"><img src="projects/nmap-service-scan/evidence/nmap-result.png" alt="Original Kali terminal capture showing the saved four-port Nmap result for the owned lab target" width="1280" height="800"></a>
+          <figcaption><span>Evidence 02 / 16 Nov 2026</span><span>Four-port service scan, private lab</span></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Selected work</p><h2 id="projects-heading">Two records from one controlled lab</h2></div>
+          <p class="section-intro">The environment check established the scope. The service scan used that same owned target. Each record includes the method, original evidence and limits of the result.</p>
+        </div>
+        <div class="project-list">
+          <article class="project-card">
+            <a class="project-image" href="projects/virtual-lab-setup/"><img src="assets/images/lab-topology.svg" alt="Kali Linux and Metasploitable 2 connected only by a private VMware LAN segment" width="960" height="360"></a>
+            <div class="project-copy">
+              <p class="project-index">01 <span>Environment / VMware</span></p>
+              <h3><a href="projects/virtual-lab-setup/">Private virtual lab setup</a></h3>
+              <p>Configured two owned virtual machines on one private segment, then checked routes and reachability before any scan.</p>
+              <a class="text-link" href="projects/virtual-lab-setup/">Read the lab record <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="project-card">
+            <a class="project-image" href="projects/nmap-service-scan/"><img src="projects/nmap-service-scan/evidence/nmap-result.png" alt="Genuine Kali terminal screenshot showing a four-port Nmap result for the owned lab target" width="1280" height="800"></a>
+            <div class="project-copy">
+              <p class="project-index">02 <span>Service discovery / Nmap</span></p>
+              <h3><a href="projects/nmap-service-scan/">Scoped Nmap service scan</a></h3>
+              <p>Scanned four TCP ports on the lab target and recorded the reported services without treating banners as proof of a CVE.</p>
+              <a class="text-link" href="projects/nmap-service-scan/">Read the scan record <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="wrap section-head">
+        <div><p class="eyebrow">About</p><h2 id="about-heading">An analyst learning to explain the whole event</h2></div>
+        <div class="prose">
+          <p>I am Sudersen Lekshmikanth, a security operations analyst and a WQE7001 Cyber Security student at Universiti Malaya. My current work includes reviewing security logs and alerts across network, endpoint and identity tools. I want to become better at tracing an alert back to the source events, checking the conditions behind it and explaining what still needs investigation.</p>
+          <p>Cybersecurity interests me because a clear finding depends on both technical detail and careful judgement. A service banner, for example, can point to a question worth checking, but it does not prove that a system is vulnerable. The projects here use systems I own in an isolated lab. They document the setup, the saved output and what I can reasonably conclude from each step. My longer-term direction is L2 incident handling, with stronger evidence review and more useful handovers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="skills" aria-labelledby="skills-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Technical skills</p><h2 id="skills-heading">Current working range</h2></div>
+          <p class="section-intro">These levels reflect what I have used or documented. The linked lab projects show the practical work behind the relevant skills.</p>
+        </div>
+        <ul class="skill-list">
+          <li><strong>Security monitoring <span class="level">Working knowledge</span></strong>Reviewing and discussing alerts and ingested records in an L1 role.</li>
+          <li><strong>Private lab networking <span class="level">Working knowledge</span></strong>Checking guest addresses, routes and reachability. <a href="projects/virtual-lab-setup/">See lab setup</a>.</li>
+          <li><strong>Nmap service discovery <span class="level">Beginner</span></strong>Running and interpreting a limited scan against an owned VM. <a href="projects/nmap-service-scan/">See scan</a>.</li>
+          <li><strong>Evidence interpretation <span class="level">Developing</span></strong>Separating observations from assumptions about vulnerabilities. <a href="projects/nmap-service-scan/#results">See findings</a>.</li>
+          <li><strong>Vulnerability research <span class="level">Developing</span></strong>Checking affected versions and exposure conditions in course case studies.</li>
+          <li><strong>Git and GitHub <span class="level">Learning</span></strong>Using this portfolio to practise version control and publishing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="training" aria-labelledby="training-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Certifications and training</p><h2 id="training-heading">Study in progress</h2></div>
+          <p class="section-intro">Completed learning activities and future credentials are labelled separately. No professional certification is claimed as earned here.</p>
+        </div>
+        <div class="two-column">
+          <div class="card"><span class="tag">Current course</span><h3>WQE7001 Cyber Security</h3><p>Universiti Malaya, Semester 1 of 2026/2027. Course work includes cybersecurity case studies, vulnerability analysis and an isolated virtual lab.</p></div>
+          <div class="card"><span class="tag">Completed practice rooms</span><h3>TryHackMe practice</h3><p>Cyber Kill Chain, Offensive Security Intro and Defensive Security Intro were recorded as completed rooms. These are practice activities, not professional certifications.</p></div>
+          <div class="card"><span class="tag">Planned credential</span><h3>CompTIA CySA+</h3><p>Proposed target: May 2028, subject to a readiness review. The exam has not been taken and this credential has not been awarded.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learning" aria-labelledby="learning-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Learning journey</p><h2 id="learning-heading">What changed in my approach</h2></div>
+          <p class="section-intro">The course has pushed me to connect a technical observation to its conditions, evidence and limits.</p>
+        </div>
+        <div class="reflection prose">
+          <p>In the Week 1 vulnerability exercise, I compared cases from industrial, energy, healthcare and public-sector systems. The CVE identifier alone was not enough to assess them. The useful question was more specific: which product and version were affected, what access would be needed, and what action would actually reduce the risk? The Unitronics controller example showed why a default password and internet exposure must be considered together. That exercise gave me a more useful way to read an advisory. I now look for the affected asset and the exposure condition before making a claim about likely impact.</p>
+          <p>The private VMware lab in my earlier pathway assignment made scope tangible. Kali Linux and a Metasploitable 2 target shared one LAN segment. I checked the enabled adapters, the assigned addresses and the routes before scanning. Kali had only the connected 192.168.77.0/24 route; an outside-lab route lookup returned “Network is unreachable.” I also recorded a successful three-packet ping to the owned target. The lesson was that saying “isolated” is weaker than showing the adapter settings and route table that supported the boundary during the run.</p>
+          <p>One setup step did go wrong. The old target console did not accept automated text, so the static address could not be entered through that route. A snapshot and configuration backup were made before using a temporary host-only management path. After the address was set, the extra path was removed and both VMs were checked on the original private segment. The later Nmap result therefore came from the intended lab network. This taught me to keep a record of a workaround and verify the final state, rather than assuming that the workaround left nothing behind.</p>
+          <p>The service scan raised a different problem: interpretation. Nmap reported FTP, SSH, HTTP and an SMB service label on four selected ports. Its Samba version was a range, and the other banners identified reported software rather than confirmed vulnerabilities. I can use these observations to decide what to check next, but I cannot turn them into a finding of exploitation. I still find it challenging to connect a version estimate to a specific package, configuration and CVE condition without jumping ahead of the evidence.</p>
+          <p>By 31 May 2027, I want to complete four further authorised lab investigations. For each, I will keep the original output, write a one-page note that separates observations from hypotheses, and identify one additional record that would confirm or challenge the explanation. I will review those notes against the source evidence and seek feedback on whether another analyst could repeat my reasoning. That is a measurable step toward the L2 incident-handling work I want to do.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="career" aria-labelledby="career-heading">
+      <div class="wrap section-head">
+        <div><p class="eyebrow">Career objective</p><h2 id="career-heading">Toward L2 incident handling</h2></div>
+        <div class="prose">
+          <p>My target role is an L2 security operations analyst who can investigate an alert across source logs, endpoint observations and network context, then give the next responder a clear account of what is known and what remains open. I already work with monitoring tools in an L1 role. My next step is to get more deliberate about the evidence behind each alert.</p>
+          <p>First, I will practise tracing alert conditions back to the original records and time window in controlled examples. Second, I will continue small, authorised labs that let me document a method and test an explanation against saved output. Third, I will build stronger case notes and ask for feedback on their clarity and limits. I plan to study toward CompTIA CySA+, with a readiness review before deciding when to sit the exam.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Contact</p><h2 id="contact-heading">Get in touch</h2></div>
+          <p class="section-intro">For professional contact and a record of the portfolio work, use the links below.</p>
+        </div>
+        <dl class="contact-list">
+          <div><dt>Email</dt><dd><a href="mailto:lekshmikanthsudersen@gmail.com">lekshmikanthsudersen@gmail.com</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/lekshmikanthsudersen" rel="me noreferrer">github.com/lekshmikanthsudersen</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/drsudersen/" rel="me noreferrer">View LinkedIn profile</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+    </div>
+  </div>
+  <footer class="site-footer"><div><span class="status-branch">main</span><span>Two owned lab VMs</span><span>Four original screenshots</span></div><a href="evidence.html">Evidence record ↗</a></footer>
+</body>
+</html>

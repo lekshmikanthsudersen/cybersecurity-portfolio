@@ -1,0 +1,18 @@
+VMware configuration check recorded 16 November 2026 at 17:46 MYT.
+Local VM file paths and hardware addresses omitted from this excerpt.
+
+Kali Linux
+  ethernet0.present = "TRUE"
+  ethernet0.connectionType = "pvn"
+  ethernet0.pvnID = "35 f8 16 51 1a 49 c0 4d-b9 50 67 9d 63 20 e0 9c"
+  ethernet0.startConnected = "TRUE"
+
+Metasploitable 2
+  ethernet0.present = "TRUE"
+  ethernet0.connectionType = "pvn"
+  ethernet0.pvnID = "35 f8 16 51 1a 49 c0 4d-b9 50 67 9d 63 20 e0 9c"
+  ethernet0.startConnected = "TRUE"
+  ethernet1.present = "FALSE"
+
+Both enabled adapters therefore had the same private LAN segment identifier in the saved configuration. The target's second adapter was disabled.
+

@@ -1,0 +1,12 @@
+Recorded 16 November 2026, MYT. Excerpt from the saved target check.
+
+Target address: 192.168.77.20/24 on eth0
+Target IPv4 route: 192.168.77.0/24 on eth0; no IPv4 default gateway
+Target IPv6 default entries: reject routes marked !n, not usable gateways
+Outside-lab IPv4 route lookup: failed without packets
+Outside-lab IPv6 route lookup: unreachable, error -101, without packets
+Ping back to Kali 192.168.77.10: 3 transmitted, 3 received, 0% loss
+
+This excerpt includes the network checks relevant to the project.
+
+

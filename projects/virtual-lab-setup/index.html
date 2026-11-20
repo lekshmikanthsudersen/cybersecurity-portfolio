@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How a two-VM private VMware lab was configured and checked before a scoped service scan.">
+  <title>Private virtual lab setup | Sudersen Lekshmikanth</title>
+  <link rel="stylesheet" href="../../assets/css/workspace.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+    <a class="brand" href="../../"><span class="brand-mark" aria-hidden="true">SL</span><span>Sudersen Lekshmikanth</span></a>
+    <span class="window-title">cybersecurity-portfolio / private-lab.md</span>
+    <nav class="site-nav" aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#projects">Projects</a><a href="../../#learning">Learning</a><a href="../../#contact">Contact</a></nav>
+  </header>
+  <div class="workspace-shell">
+    <nav class="activity-rail" aria-label="Workspace shortcuts"><a href="../../" aria-label="Overview">SL</a><a href="../../#projects" class="active" aria-label="Projects">01</a><a href="../../#learning" aria-label="Learning">02</a><a href="../../#contact" aria-label="Contact">@</a></nav>
+    <aside class="explorer" aria-label="Portfolio explorer">
+      <p class="explorer-label">EXPLORER</p><p class="tree-heading">▾ CYBERSECURITY PORTFOLIO</p>
+      <nav class="file-tree" aria-label="Portfolio files">
+        <a class="tree-item" href="../../"><span class="file-icon md">M</span>overview.md</a>
+        <a class="tree-item" href="../../#about"><span class="file-icon md">M</span>about.md</a>
+        <a class="tree-item" href="../../#skills"><span class="file-icon json">{ }</span>skills.json</a>
+        <a class="tree-item" href="../../#training"><span class="file-icon md">M</span>training.md</a>
+        <a class="tree-item" href="../../#learning"><span class="file-icon md">M</span>learning.md</a>
+        <a class="tree-item" href="../../#career"><span class="file-icon md">M</span>career.md</a>
+        <a class="tree-item" href="../../#contact"><span class="file-icon md">M</span>contact.md</a>
+      </nav>
+      <p class="tree-heading tree-group">▾ CASE FILES</p>
+      <nav class="file-tree" aria-label="Case files">
+        <a class="tree-item selected" href="./"><span class="file-icon case">01</span>private-lab.md</a>
+        <a class="tree-item" href="../nmap-service-scan/"><span class="file-icon case">02</span>nmap-scan.md</a>
+        <a class="tree-item" href="../../evidence.html"><span class="file-icon csv">#</span>evidence.csv</a>
+      </nav>
+      <a class="explorer-footer" href="https://github.com/lekshmikanthsudersen/cybersecurity-portfolio">View repository ↗</a>
+    </aside>
+    <div class="editor">
+      <nav class="editor-tabs" aria-label="Open portfolio pages">
+        <a class="editor-tab" href="../../"><span class="tab-dot md"></span>overview.md</a>
+        <a class="editor-tab active" href="./" aria-current="page"><span class="tab-dot case"></span>private-lab.md</a>
+        <a class="editor-tab" href="../nmap-service-scan/"><span class="tab-dot case"></span>nmap-scan.md</a>
+        <a class="editor-tab" href="../../evidence.html"><span class="tab-dot csv"></span>evidence.csv</a>
+      </nav>
+      <div class="editor-path">portfolio <span>/</span> case-files <span>/</span> private-lab.md</div>
+  <main id="main">
+    <div class="page-hero"><div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../">Portfolio</a> / <span aria-current="page">Private virtual lab setup</span></nav>
+      <p class="eyebrow">Project 01 · Environment and scope</p>
+      <h1>Private virtual lab setup</h1>
+      <p>I checked that Kali Linux could reach one owned training target while the lab had no usable route to an outside network.</p>
+    </div></div>
+    <section class="section"><div class="wrap project-layout">
+      <div class="project-main">
+        <h2>Objective</h2>
+        <p>Build a controlled environment for service discovery and record the network boundary before scanning. The project used only two virtual machines owned for training.</p>
+
+        <h2>Environment and tools</h2>
+        <p>VMware Workstation Pro 25H2 hosted Kali Linux 2026.3 at <code>192.168.77.10/24</code> and Metasploitable 2 at <code>192.168.77.20/24</code>. Both enabled network adapters used one private LAN segment. The checks used VMware settings, guest address and route commands, a route lookup and ICMP ping.</p>
+        <figure><img src="../../assets/images/lab-topology.svg" alt="Two owned virtual machines share a private LAN segment with no usable default gateway" width="960" height="360"><figcaption>Lab topology reconstructed from the saved adapter settings and address checks. The diagram is explanatory; the screenshots below are the original GUI evidence.</figcaption></figure>
+
+        <h2>Method</h2>
+        <ol>
+          <li>Placed Kali and Metasploitable 2 on the same VMware LAN segment and checked that no second adapter was enabled.</li>
+          <li>Set static addresses on the <code>192.168.77.0/24</code> subnet without a default gateway.</li>
+          <li>Read each guest's addresses and routing table. Ran an outside-lab route lookup, which sends no probe packet.</li>
+          <li>Pinged the owned target from Kali and Kali from the target to confirm local reachability.</li>
+        </ol>
+
+        <h2 id="results">Results and evidence</h2>
+        <p>Kali's IPv4 table contained only the connected subnet and no IPv6 route. Its outside-lab lookup returned “Network is unreachable.” The target's IPv4 table likewise contained only the connected subnet; its apparent IPv6 default entries were reject routes. Each direction of the ping test received three of three replies. These checks support isolation for the recorded run, not a claim about every later VM state.</p>
+        <div class="two-column">
+          <figure><a href="evidence/kali-lan-segment.png"><img src="evidence/kali-lan-segment.png" alt="Original VMware settings showing Kali's adapter selected as LAN Segment" width="1135" height="1083"></a><figcaption>Kali VMware adapter settings, captured 18 November 2026. Open full image.</figcaption></figure>
+          <figure><a href="evidence/target-lan-segment.png"><img src="evidence/target-lan-segment.png" alt="Original VMware settings showing the Metasploitable target's adapter selected as LAN Segment" width="1129" height="1075"></a><figcaption>Target VMware adapter settings, captured 18 November 2026. Open full image.</figcaption></figure>
+        </div>
+        <figure><a href="evidence/kali-routes-and-reachability.png"><img src="evidence/kali-routes-and-reachability.png" alt="Original Kali terminal screenshot with connected subnet, failed outside-lab route lookup, and three successful pings to the owned target" width="1280" height="800"></a><figcaption>Saved Kali address, route and reachability results from 16 November 2026. Open full image.</figcaption></figure>
+        <ul class="evidence-links">
+          <li><a href="evidence/adapter-config-excerpt.txt">Sanitised VMware adapter configuration excerpt</a></li>
+          <li><a href="evidence/route-check.txt">Kali route and ping excerpt</a></li>
+          <li><a href="evidence/target-route-check.txt">Target route and ping excerpt</a></li>
+          <li><a href="../../evidence.html">Evidence provenance and screenshot hashes</a></li>
+        </ul>
+
+        <h2>Issue and next improvement</h2>
+        <p>The older target console did not accept automated text for the static address. A snapshot and configuration backup preceded a temporary host-only management path; after configuration, that path was removed and the private segment was restored before scanning. Next time I would record the adapter state immediately before and after every temporary management change in one dated checklist. That would make the boundary easier to review without relying on separated screenshots.</p>
+        <p class="note">The route results and service scan are from 16 November 2026. The full-resolution VMware settings screenshots were captured on 18 November 2026 to verify the saved configuration.</p>
+        <p><a class="card-link" href="../nmap-service-scan/">Next project: scoped Nmap service scan →</a></p>
+      </div>
+      <aside class="fact-panel" aria-label="Project facts">
+        <h2>At a glance</h2>
+        <dl>
+          <dt>Scope</dt><dd>Two owned virtual machines</dd>
+          <dt>Network</dt><dd>Private VMware LAN segment</dd>
+          <dt>Recorded run</dt><dd>16 November 2026</dd>
+          <dt>Outcome</dt><dd>Local reachability confirmed; outside route lookup failed</dd>
+        </dl>
+      </aside>
+    </div></section>
+  </main>
+    </div>
+  </div>
+  <footer class="site-footer"><div><span class="status-branch">main</span><span>Two owned lab VMs</span><span>16 Nov 2026 run</span></div><a href="../../evidence.html">Evidence record ↗</a></footer>
+</body>
+</html>
+

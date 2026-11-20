@@ -1,0 +1,10 @@
+Recorded 16 November 2026, MYT. Excerpt from the saved lab run.
+
+Kali address: 192.168.77.10/24 on eth0
+Kali IPv4 route: 192.168.77.0/24 dev eth0 scope link
+Kali IPv6 routes: none
+Outside-lab route lookup: Network is unreachable (no packets sent)
+Ping to owned target 192.168.77.20: 3 transmitted, 3 received, 0% loss
+
+The excerpt shows the state observed during this run. It does not establish that every future VM configuration remains isolated.
+
